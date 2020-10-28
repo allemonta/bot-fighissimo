@@ -1,0 +1,21 @@
+{
+  "name": "bot-fighissimo",
+  "version": "1.0.0",
+  "description": "1. Installare [nodeJS](https://nodejs.org/en/download/)\r 2. Ottenere il token di telegram tramite il bot [Botfather](https://t.me/Botfather)\r 3. Inserire il token così come specificato nel file `.env.sample`\r 4. Installare le dipendenze con `npm install`\r 5. Avviare l'applicativo con `npm start`",
+  "main": "index.js",
+  "scripts": {
+    "start": "docker-compose up",
+    "stop": "docker-compose down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allemonta/bot-fighissimo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allemonta/bot-fighissimo/issues"
+  },
+  "homepage": "https://github.com/allemonta/bot-fighissimo#readme"
+}

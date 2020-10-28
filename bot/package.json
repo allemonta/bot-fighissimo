@@ -1,0 +1,26 @@
+{
+  "name": "bot-fighissimo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon -L --watch src -e js src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allemonta/bot-fighissimo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allemonta/bot-fighissimo/issues"
+  },
+  "homepage": "https://github.com/allemonta/bot-fighissimo#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.6",
+    "telegraf": "^3.38.0"
+  },
+  "description": ""
+}
