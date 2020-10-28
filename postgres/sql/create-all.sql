@@ -1,0 +1,7 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE IF NOT EXISTS balances (
+	id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    telegramAccountId VARCHAR(255) NOT NULL UNIQUE,
+	balance INT NOT NULL DEFAULT 0
+);
