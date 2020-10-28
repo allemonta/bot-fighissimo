@@ -1,5 +1,8 @@
 version: "3.7"
 
+networks:
+  bot-local:
+
 services:
   telegram-bot:
     build:
@@ -14,3 +17,45 @@ services:
       - ./bot:/home/node/app
     environment:
       TELEGRAM_TOKEN: ${TELEGRAM_TOKEN}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      bot-local:
+    depends_on:
+      - bot-postgres
+
+  bot-postgres:
+    container_name: bot-postgres
+    image: library/postgres:13.0-alpine
+    restart: always
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
+    networks:
+      bot-local:
+        aliases:
+          - ${POSTGRES_HOST}
+
+  bot-pgadmin4:
+    container_name: bot-pgadmin4
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    volumes:
+      - ./postgres/pgadmin:/var/lib/pgadmin
+    ports:
+      - 16543:80
+    depends_on:
+      - bot-postgres
+    networks:
+      bot-local:
+    logging:
+      driver: none

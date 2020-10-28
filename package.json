@@ -4,8 +4,10 @@
   "description": "1. Installare [nodeJS](https://nodejs.org/en/download/)\r 2. Ottenere il token di telegram tramite il bot [Botfather](https://t.me/Botfather)\r 3. Inserire il token così come specificato nel file `.env.sample`\r 4. Installare le dipendenze con `npm install`\r 5. Avviare l'applicativo con `npm start`",
   "main": "index.js",
   "scripts": {
-    "start": "docker-compose up",
-    "stop": "docker-compose down"
+    "start": "npm run stop && docker-compose up",
+    "stop": "docker-compose down -v --remove-orphans",
+    "db:query": "node postgres/scripts/execute-query.js",
+    "db:create": "npm run db:query create-all"
   },
   "repository": {
     "type": "git",
